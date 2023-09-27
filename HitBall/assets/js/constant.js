@@ -1,10 +1,20 @@
 //assets
+var splashBg;
+var splashLogo;
+var progressBase;
+var progressBar = null;
+var loadingText = null;
+var fonts = {
+    "riffic_free_bold": null,
+}
 var canon;
 var bullets;
 var bullet;
-var bulletTime=0;
+var bulletTime = 0;
 var target;
-var collideCheckCount=0;
+var collideCheckCount = 0;
+var gamelogo;
+var backButton;
 
 var level1Graphics;
 var level1Graphics2;
@@ -48,7 +58,7 @@ var level7Collision2;
 var level8Graphics;
 var level8Collision;
 //..........Condition for level check....................
-var rotateCheck=0;
+var rotateCheck = 0;
 
 var bulletTween;
 //GamePLay Constant......................................
@@ -66,10 +76,10 @@ var background;
 var background1;
 var pauseButton;
 var homeButton;
-var fireCheck=1;
-var homeButtonCheck=1;
-var pauseButtonCheck=1;
-var targetDestroy=[2,3,4,6,7,8,9,10];//TARGET DESTROY POINT ARRAY
+var fireCheck = 1;
+var homeButtonCheck = 1;
+var pauseButtonCheck = 1;
+var targetDestroy = [2, 3, 4, 6, 7, 8, 9, 10];//TARGET DESTROY POINT ARRAY
 var targetDestroyIndex;//ATRGET DESTROY INDEX
 var targetDestroyCounter;//Counts the no of times for each level according to targetDestroy array
 var targetSpriteSheetStart;//destroy sprite sheet animation start
@@ -77,8 +87,8 @@ var targetSpriteSheetEnd;//destroy sprite sheet animation end
 var pointCounter;//counts the points
 var pointShowText;//Text show point on the screen
 var gameSpeed;
-var gameSpeedLowLimit=0.010;
-var gameSpeedHighLimit=0.1;
+var gameSpeedLowLimit = 0.010;
+var gameSpeedHighLimit = 0.1;
 //....................timer.......................
 var timer;
 var timerShow;
@@ -101,89 +111,90 @@ var planetDisplay;
 //.........hand animation.......................
 var handAnimation;
 //.....Tutorial Point.............................
-var tutorialPoint=5;
-var tutorialCannonClicked=1;
+var tutorialPoint = 5;
+var tutorialCannonClicked = 1;
 var fireText;
 var tutorialTargetText;
 //...........Target Animation........
 var targetAnimation;
+
 //..................................................R E N D E R......................................................
- /* render: function()
-    {
-        //..............LEVEL 1....................
-        if(random==1)
-        {
-            this.game.debug.physicsGroup(level1Collision);
-            this.game.debug.physicsGroup(level1Collision2);
-        }      
-        //.............LEVEL 2............................
-        if(random==2)
-        {
-                this.game.debug.physicsGroup(level2Collision);
-                this.game.debug.physicsGroup(level2Collision2);
-                this.game.debug.physicsGroup(level2Collision3);
-                this.game.debug.physicsGroup(level2Collision4);
+/* render: function()
+   {
+       //..............LEVEL 1....................
+       if(random==1)
+       {
+           this.game.debug.physicsGroup(level1Collision);
+           this.game.debug.physicsGroup(level1Collision2);
+       }      
+       //.............LEVEL 2............................
+       if(random==2)
+       {
+               this.game.debug.physicsGroup(level2Collision);
+               this.game.debug.physicsGroup(level2Collision2);
+               this.game.debug.physicsGroup(level2Collision3);
+               this.game.debug.physicsGroup(level2Collision4);
+       }
+       //..............LEVEL 3...........................
+       if(random==3)
+       {
+               this.game.debug.physicsGroup(level3Collision);
+               this.game.debug.physicsGroup(level3Collision2);
+       }
+       //......Level 4........................................
+       if(random==4)
+       {
+               this.game.debug.physicsGroup(level4Collision);
+       }
+       //.........LEVEL 5....................................
+       if(random==5)
+       {
+                 this.game.debug.physicsGroup(level5Collision);
+                 this.game.debug.physicsGroup(level5Collision2);
+                  this.game.debug.spriteBounds(level5Graphics);
+                  this.game.debug.spriteBounds(level5Graphics2);
+       }
+       //.............LEVEL 6......................................
+       if(random==6)
+       {
+                 this.game.debug.physicsGroup(level6Collision);
+                 this.game.debug.physicsGroup(level6Collision2);
+       }
+       //.............LEVEL 7......................................
+       if(random==7)
+       {
+               this.game.debug.physicsGroup(level7Collision);
+               this.game.debug.physicsGroup(level7Collision2);
+       }
+        //.............LEVEL 8......................................
+        if(random==8)
+           this.game.debug.physicsGroup(level8Collision);
+ 
+   }, */
+/* if(starGroup.y>300)
+       {
+   
+            starGroup.y=-500;
+                game.add.tween(starGroup).to({ y: 0 },1000,Phaser.Easing.Linear.None,this);
         }
-        //..............LEVEL 3...........................
-        if(random==3)
+        if(starGroup2.y>600)
         {
-                this.game.debug.physicsGroup(level3Collision);
-                this.game.debug.physicsGroup(level3Collision2);
+            starGroup.y=-500;
+        game.add.tween(starGroup2).to({ y: 0 },1000,Phaser.Easing.Linear.None,this);
+           
         }
-        //......Level 4........................................
-        if(random==4)
+        if(starGroup3.y>800)
         {
-                this.game.debug.physicsGroup(level4Collision);
-        }
-        //.........LEVEL 5....................................
-        if(random==5)
-        {
-                  this.game.debug.physicsGroup(level5Collision);
-                  this.game.debug.physicsGroup(level5Collision2);
-                   this.game.debug.spriteBounds(level5Graphics);
-                   this.game.debug.spriteBounds(level5Graphics2);
-        }
-        //.............LEVEL 6......................................
-        if(random==6)
-        {
-                  this.game.debug.physicsGroup(level6Collision);
-                  this.game.debug.physicsGroup(level6Collision2);
-        }
-        //.............LEVEL 7......................................
-        if(random==7)
-        {
-                this.game.debug.physicsGroup(level7Collision);
-                this.game.debug.physicsGroup(level7Collision2);
-        }
-         //.............LEVEL 8......................................
-         if(random==8)
-            this.game.debug.physicsGroup(level8Collision);
-  
-    }, */
-    /* if(starGroup.y>300)
-           {
-       
-                starGroup.y=-500;
-                    game.add.tween(starGroup).to({ y: 0 },1000,Phaser.Easing.Linear.None,this);
-            }
-            if(starGroup2.y>600)
-            {
-                starGroup.y=-500;
-            game.add.tween(starGroup2).to({ y: 0 },1000,Phaser.Easing.Linear.None,this);
-               
-            }
-            if(starGroup3.y>800)
-            {
-                starGroup.y=-500;
-            game.add.tween(starGroup3).to({ y: 0 },1000,Phaser.Easing.Linear.None,this);
-                
-            } */
- /*  if(planetDisplay==1)
-        {
-            if(planet1 && planet1.y>500)
-            game.world.bringToTop(planet1);
-            if(planet2  && planet1.y>500)
-            game.world.bringToTop(planet2);
-            if(planet3  && planet3.y>700)
-            game.world.bringToTop(planet3);
+            starGroup.y=-500;
+        game.add.tween(starGroup3).to({ y: 0 },1000,Phaser.Easing.Linear.None,this);
+            
         } */
+/*  if(planetDisplay==1)
+       {
+           if(planet1 && planet1.y>500)
+           game.world.bringToTop(planet1);
+           if(planet2  && planet1.y>500)
+           game.world.bringToTop(planet2);
+           if(planet3  && planet3.y>700)
+           game.world.bringToTop(planet3);
+       } */
