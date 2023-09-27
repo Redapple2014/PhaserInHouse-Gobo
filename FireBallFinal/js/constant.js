@@ -1,5 +1,14 @@
 //GamePlay Constant
+var splashBg;
+var splashLogo;
+var progressBase;
+var progressBar = null;
+var loadingText = null;
+var fonts = {
+    "riffic_free_bold": null,
+}
 var gameBg;
+var gamelogo;
 var cannonBase;
 var cannonBody;
 var cannonWheel;
@@ -28,44 +37,44 @@ var block;
 var bullet;//bullet variable
 var canon;//canon variable
 var platform;//platform variable
-var count=0;//for update function collision control
-var block=[];//conatins all Block
-var blockCount=0;//index of Block array
+var count = 0;//for update function collision control
+var block = [];//conatins all Block
+var blockCount = 0;//index of Block array
 var limit;// for no of limits
 var bulletClickEnable;//control bullet fire
 //Obstacle............
 var obstacle;
 var obstacle1;
 var obstacle2;
-var bulletObstacleCollideCheck=1;
+var bulletObstacleCollideCheck = 1;
 var obstacleTween;
 var obstacle1Tween;
-var pointCount=0;
+var pointCount = 0;
 //......................
-var timerStartLimit=6;
-var timer=10;//idle time limit
+var timerStartLimit = 6;
+var timer = 10;//idle time limit
 var timerShow;
 //..................................
 var pointText;
 var pointValue;
 //.....point............................
-var speed=2500;
-var pointCheck=0;
-var collisionCheck=0;
-var TwoObstacleCollideCheck=1;
+var speed = 2500;
+var pointCheck = 0;
+var collisionCheck = 0;
+var TwoObstacleCollideCheck = 1;
 //level5...............
-var TweenCompleteCheck=0;
+var TweenCompleteCheck = 0;
 var fifthLevelObstacle;
 //............random check;
-var colorArray = [[],[]];
-var backGroundArray=[];
-var backGroundArrayIndex=0;
-var colorCheck=0;
-var colorIndex=0;
+var colorArray = [[], []];
+var backGroundArray = [];
+var backGroundArrayIndex = 0;
+var colorCheck = 0;
+var colorIndex = 0;
 var backgroundSettingLoop;
 //.................
-var timerStartLimit=6;
-var timer=10;//idle time limit
+var timerStartLimit = 6;
+var timer = 10;//idle time limit
 var timerShow;
 //......................................................
 //..splash constant........................................
@@ -88,8 +97,8 @@ var gamePauseOverlay;
 var gamePausePlayButton;
 var gamePauseGroup;
 //.....Tutorial Point.............................
-var tutorialPoint=10;
-var tutorialCannonClicked=1;
+var tutorialPoint = 10;
+var tutorialCannonClicked = 1;
 var fireText;
 var tutorialTargetText;
 //.........hand animation.......................
@@ -99,12 +108,12 @@ var handAnimation;
 var pinkColor = [];
 var purpleColor = [];
 var deepPurpleColor = [];
-var indigoColor=[];
-var blueColor=[];
+var indigoColor = [];
+var blueColor = [];
 var scoreOverLay;
-var reverseCreate=0;
-var timerPause=1;
-var fireTextNum=3;//Counts the no of times the loop 
+var reverseCreate = 0;
+var timerPause = 1;
+var fireTextNum = 3;//Counts the no of times the loop 
 var timerBeforeGameLoop;
 var startBackground;//Black Background One Pixel reference
 //.......................................................
